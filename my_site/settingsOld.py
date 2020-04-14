@@ -133,7 +133,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 # меняем след. строку
 STATIC_URL = '/static/'
 # на строку
-#STATIC_URL = '/asset-v1:SkillFactory+PWS-1+5JUN2019+type@asset+block@/'
+#STATIC_URL = ''
 
 # меняем след. строку
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')

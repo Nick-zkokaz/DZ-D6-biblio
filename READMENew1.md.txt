@@ -17,6 +17,7 @@
    - pip install -r requirements.txt
 6) Запустите локальный сервер:
    - python manage.py runserver
+
 Сервер поднимается по адресу
 Starting development server at http://127.0.0.1:8000/
 Quit the server with CTRL-BREAK.
@@ -31,9 +32,11 @@ Quit the server with CTRL-BREAK.
    - SECRET_KEY = 'Ваш_секретный_код' на SECRET_KEY = os.environ.get('SECRET_KEY') как это было рассказано в скринкасте Владимира Ваганова
    - ALLOWED_HOSTS = ['*'] на ALLOWED_HOSTS = ['127.0.0.1','localhost','0.0.0.0'] в скринкасте есть еще адрес на heroku
    - DATABASES = {'default': {'ENGINE': 'django.db.backends.sqlite3','NAME': os.path.join(BASE_DIR, 'db.sqlite3'),}} на import dj_database_url и DATABASES = {'default': dj_database_url.config(default=os.environ['DATABASE_URL'])}
-   - STATIC_URL = '/static/' на STATIC_URL = '/asset-v1:SkillFactory+PWS-1+5JUN2019+type@asset+block@/' и STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
-ВСЕ Изменения со стандарта Django описаны комментариями в тексте файла settings.py
-1/1) настройки Heroku 37:00 скринкаста 
+   - STATIC_URL = '/static/' на STATIC_URL = '//' и STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+
+ВСЕ Изменения настроек со стандартных настроек  Django описаны комментариями в тексте файла settings.py
+
+2) настройки Heroku начинаются с 37:00 скринкаста Владимира Ваганова
 	- Входим в Heroku
 	- подключаем Heroku Postgres
 	- настроить интеграцию с GitHub
@@ -43,13 +46,13 @@ Quit the server with CTRL-BREAK.
 	- heroku config:set DISABLE_COLLECTSTATIC=1
 	- python manage.py collecstatic --noinput
 	- смотрим Deploy --> Deploy Branch
-https://devcenter.heroku.com/articles/getting-started-with-python#prepare-the-app
-2) Перейти в каталог с проектом:
+		- помощь в настройках на https://devcenter.heroku.com/articles/getting-started-with-python#prepare-the-app
+3) Перейти в каталог с проектом:
    - cd C:\my_site
-3) Выпонить следующие команды:
+4) Выполнить следующие команды:
    - git init
    - git add .
-   - git commit -m "initial commit
+   - git commit 
    - heroku login
    - heroku create
    - heroku addons:create heroku-postgresql --as DATABASE
@@ -57,7 +60,5 @@ https://devcenter.heroku.com/articles/getting-started-with-python#prepare-the-ap
    - git push heroku master
    - heroku run python manage.py loaddata data.xml
    - heroku run python manage.py createsuperuser
-4) Если необходимо переименовываем приложение:
-   - heroku rename -a oldname newname
-5) Запускаем приложение:
+
    - heroku open
