@@ -21,8 +21,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'e#!xkhudyp^e4^ht0_tiwh7nn9n0oo8!%qftg2s8m5k%x6t1j&' #- заменил для деплоя на
-#SECRET_KEY = os.environ.get('SECRET_KEY')
+#SECRET_KEY = 'e#!xkhudyp^e4^ht0_tiwh7nn9n0oo8!%qftg2s8m5k%x6t1j&' #- заменил для деплоя на
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -76,18 +76,18 @@ WSGI_APPLICATION = 'my_site.wsgi.application'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 # начало забоя для деплоя
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#    }
+#}
 # конец забоя для деплоя
 
 # теперь открываем эту залочку - убираем # в след.строке
-#import dj_database_url
+import dj_database_url
 # и меняем след строку
-# DATABASES = {'default': dj_database_url.config(default=os.environ['DATABASE_URL'])}
+DATABASES = {'default': dj_database_url.config(default=os.environ['DATABASE_URL'])}
 # на строку
 #DATABASES = {'default': dj_database_url.config(default=os.environ['DATABASE_URL'])}
 
@@ -137,9 +137,9 @@ STATIC_URL = '/static/'
 #STATIC_URL = ''
 
 # меняем след. строку
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+#STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # на строку
-#STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
